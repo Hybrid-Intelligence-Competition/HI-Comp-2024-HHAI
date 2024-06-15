@@ -259,6 +259,70 @@ See <a href="#submission">Submission</a> section for more information on how to 
 
                 <aside class="text-center bg-gradient-primary-to-secondary"></aside>
 
+       <section class="bg-light" id="submission">
+            <div class="container px-5">
+                <div class="row gx-5 align-items-center justify-content-center justify-content-lg-between">
+                    <div class="col-12 col-lg-12">
+                        <h2 class="text-center">Submitted Scenarios</h2><br/>
+                        <p> In the following, a data set containing all the scenarios submitted by the competition participants is reported.
+                            </p>
+
+                        <div id="table-container"></div>
+        
+                        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+                        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/js/bootstrap.bundle.min.js"></script>
+                        <script src="js/jquery.csv.min.js"></script>
+                        <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+                        <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+                        <script src="js/csv_to_html_table.js"></script>
+
+                        <script>
+                            function format_link(link) {
+                                if (link)
+                                    return "<a href='" + link + "' target='_blank'>" + link + "</a>";
+                                else return "";
+                            }
+
+                            CsvToHtmlTable.init({
+                                csv_path: "data/HIComp2024_HHAI_SubmittedScenarios.csv",
+                                element: "table-container",
+                                allow_download: true,
+                                csv_options: {
+                                    separator: ",",
+                                    delimiter: '"'
+                                },
+                                datatables_options: {
+                                    paging: true,
+                                    pageLength: 1.,
+                                    lengthChange: false,
+                                    columns: [{ width: '3%' }, { width: '3%' }, { width: '3%' }, { width: '3%' }, { width: '42.5%' }, { width: '3%' }, { width: '42.5%' }]
+                                }/*,
+                                custom_formatting: [
+                                    [4, format_link]
+                                ]*/
+                            });
+                        </script>
+
+                        <p>
+                            The columns in the dataset are described as follows:
+                         <ul>
+                            <li><strong>Date:</strong> The date of submission of the scenarios (Date).</li>
+                            <li><strong>Event:</strong> The event where the scenario was submitted (String).</li>
+                            <li><strong>Team:</strong> The name of the participants team that submitted the scenario (String).</li>
+                            <li><strong>Best Case - Use Case HI Team:</strong> The HI Use Case (see Section 1 in the competition details) considered by the Team for the Best Case Scenario (String).</li>
+                            <li><strong>Best Case - Scenario:</strong> The Best Case Scenario submitted by the Team (String).</li>
+                            <li><strong>Worst Case - Use Case HI Team:</strong> The HI Use Case (see Section 1 in the competition details) considered by the Team for the Worst Case Scenario (String).</li>
+                            <li><strong>Worst Case - Scenario:</strong> The Worst Case Scenario submitted by the Team (String).</li>
+                            
+                        </ul></p>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+                <aside class="text-center bg-gradient-primary-to-secondary"></aside>
+
 
         <!-- App features section-->
         <section id="organization">
