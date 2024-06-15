@@ -16,6 +16,12 @@
         <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;1,400&amp;display=swap" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/js/bootstrap.bundle.min.js"></script>
+        <script src="js/jquery.csv.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+        <script src="js/csv_to_html_table.js"></script>
     </head>
     <body id="page-top">
         <!-- Navigation-->
@@ -31,8 +37,9 @@
                         <li class="nav-item"><a class="nav-link me-lg-3" href="#overview">Overview</a></li>
                         <li class="nav-item"><a class="nav-link me-lg-3" href="#challenge">Challenge</a></li>
                         <li class="nav-item"><a class="nav-link me-lg-3" href="#submission">Submission</a></li>
-                        <li class="nav-item"><a class="nav-link me-lg-3" href="#finalists">Finalists</a></li>
                         <li class="nav-item"><a class="nav-link me-lg-3" href="#dates">Dates</a></li>
+                        <li class="nav-item"><a class="nav-link me-lg-3" href="#finalists">Finalists</a></li>
+                        <li class="nav-item"><a class="nav-link me-lg-3" href="#scenarios">Scenarios</a></li>
                         <li class="nav-item"><a class="nav-link me-lg-3" href="#organization">Organization</a></li>
                     </ul>
                     <!--<button class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0" data-bs-toggle="modal" data-bs-target="#feedbackModal">
@@ -56,7 +63,7 @@
 
                             <h5 class="lead fw-normal text-muted mb-5">To be held in Malmö, Sweden, as a part of the <a href="
 https://hhai-conference.org/2024/">HHAI 2024</a> conference.</h5>
-                            <div class="d-flex flex-column align-items-center">
+                            <!--<div class="d-flex flex-column align-items-center">
                                 <a href="#submission"><button class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0">
                                     <span class="d-flex align-items-center">
                                         <span>Submit Here!</span>
@@ -64,7 +71,7 @@ https://hhai-conference.org/2024/">HHAI 2024</a> conference.</h5>
                                 </button></a>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
                     <!--<div class="col-lg-2">
                         <div class="masthead-device-mockup">
                             <svg class="circle" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -93,17 +100,31 @@ https://hhai-conference.org/2024/">HHAI 2024</a> conference.</h5>
                 </div>
             </div>
         </header>
-        <!-- Quote/testimonial aside-->
-        <aside class="text-center bg-gradient-primary-to-secondary">
-            <!-- <div class="container px-5">
-                <div class="row gx-5 justify-content-center">
-                    <div class="col-xl-8">
-                        <div class="h2 fs-1 text-white mb-4">Theme HI Comp 2024<br/> Fundamental qualities of HI teams.</div>
-                        <img src="assets/img/tnw-logo.svg" alt="..." style="height: 3rem" />
+
+                <aside class="text-center bg-gradient-primary-to-secondary"></aside>
+
+
+        <section class="bg-light" id="thankyou">
+            <div class="container px-5">
+                <div class="row gx-5 align-items-center justify-content-center justify-content-lg-between">
+                    <div class="col-12 col-lg-12 text-center">
+                        <h2>Thank you!</h2><br/>
+                        <h5 class="lead fw-normal text-muted mb-5">A great thank you to all the participants for their contributions!<br/>
+                            The winner teams and all the submitted scenarios can be found <a href="#finalists">here</a>.
+                        </h5>
+                        <div id="pics-container"></div>
+                        <script>
+                        var pic_folder = "assets/pics/";
+                        var pic_nr = 4;
+                        for (let i = 1; i < pic_nr+1; i++) {
+                            var pic_addr = pic_folder + "p"+i +".jpg";
+                            $("#pics-container").append( "<a href='"+pic_addr+"'><img src='"+pic_addr+"' class='img-thumbnail' style = 'height:200px !important;'></a>" );
+                        }
+                        </script>
                     </div>
                 </div>
-            </div>-->
-        </aside>
+            </div>
+        </section>
         <!-- Basic features section-->
         <section class="bg-light" id="overview">
             <div class="container px-5">
@@ -246,12 +267,32 @@ See <a href="#submission">Submission</a> section for more information on how to 
 
                 <aside class="text-center bg-gradient-primary-to-secondary"></aside>
 
-       <section class="bg-light" id="submission">
+       <section class="bg-light" id="finalists">
             <div class="container px-5">
                 <div class="row gx-5 align-items-center justify-content-center justify-content-lg-between">
                     <div class="col-12 col-lg-12">
                         <h2 class="text-center">Finalists and Participants</h2><br/>
-                        <p> To be announced</p>
+                        <p>
+                            <h4>1st place</h4>
+                            Team <b>Ram & Hound</b>: Chiara Natali (University of Milano-Bicocca), Caterina Fregosi (University of Milano-Bicocca)<br/><br/>
+                            <h4>2nd place</h4>
+                            Team <b>HAI Enthusiasts</b>: Michael Akintunde (King's College London), Rushali Gupta (Lund University)<br/><br/>
+                            <h4>3rd place</h4>
+                            Team <b>SR</b>: Sangeetha Ramanath (Pratt Institute)<br/><br/>
+                        </p>
+                        <h4>All participants teams (alphabetical order)</h4>
+                        <p>
+                            <ul>
+                            <li><b>Doudou and Petter</b>: Doudou BA (Charles University), Petter Ericson (Umea University)</li>
+                            <li><b>HAI Enthusiasts</b>: Michael Akintunde (King's College London), Rushali Gupta (Lund University)</li>
+                            <li><b>HHAI team</b>: Kristian Fenech (Eotvos Lorand University), Janos Gulyas (Eotvos Lorand University)</li>
+                            <li><b>ItaFin</b>: Haoyu Chen (University of Oulu), Raffaella Esposito (University of Naples Federico II)</li>
+                            <li><b>Ram & Hound</b>: Chiara Natali (University of Milano-Bicocca), Caterina Fregosi (University of Milano-Bicocca)</li>
+                            <li><b>SR</b>: Sangeetha Ramanath (Pratt Institute)</li>
+                            <li><b>TeamBlue</b>: Kristian Fenech (Eotvos Lorand University), Janos Gulyas (Eotvos Lorand University)</li>
+                            </ul>
+
+                    </p>
                     </div>
                 </div>
             </div>
@@ -259,7 +300,7 @@ See <a href="#submission">Submission</a> section for more information on how to 
 
                 <aside class="text-center bg-gradient-primary-to-secondary"></aside>
 
-       <section class="bg-light" id="submission">
+       <section class="bg-light" id="scenarios">
             <div class="container px-5">
                 <div class="row gx-5 align-items-center justify-content-center justify-content-lg-between">
                     <div class="col-12 col-lg-12">
@@ -269,12 +310,7 @@ See <a href="#submission">Submission</a> section for more information on how to 
 
                         <div id="table-container"></div>
         
-                        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-                        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/js/bootstrap.bundle.min.js"></script>
-                        <script src="js/jquery.csv.min.js"></script>
-                        <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-                        <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
-                        <script src="js/csv_to_html_table.js"></script>
+                        
 
                         <script>
                             function format_link(link) {
