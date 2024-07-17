@@ -16,6 +16,9 @@
         <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;1,400&amp;display=swap" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
+        <link rel="stylesheet" href="css/owl.carousel.min.css">
+        <link rel="stylesheet" href="css/owl.theme.default.min.css">
+
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/js/bootstrap.bundle.min.js"></script>
         <script src="js/jquery.csv.min.js"></script>
@@ -112,14 +115,32 @@ https://hhai-conference.org/2024/">HHAI 2024</a> conference.</h5>
                         <h5 class="lead fw-normal text-muted mb-5">A great thank you to all the participants for their contributions!<br/>
                             The winner teams and all the submitted scenarios can be found <a href="#finalists">here</a>.
                         </h5>
-                        <div id="pics-container"></div>
+                        <div id="pics-container" class="owl-carousel"></div>
                         <script>
                         var pic_folder = "assets/pics/";
                         var pic_nr = 4;
                         for (let i = 1; i < pic_nr+1; i++) {
                             var pic_addr = pic_folder + "p"+i +".jpg";
-                            $("#pics-container").append( "<a href='"+pic_addr+"'><img src='"+pic_addr+"' class='img-thumbnail' style = 'height:200px !important;'></a>" );
+                            $("#pics-container").append( "<div><a href='"+pic_addr+"'><img src='"+pic_addr+"' class='img-thumbnail'></a></div>" );
                         }
+                        $(document).ready(function(){
+                          $('.owl-carousel').owlCarousel({
+                                loop:true,
+                                margin:10,
+                                nav:true,
+                                responsive:{
+                                    0:{
+                                        items:1
+                                    },
+                                    600:{
+                                        items:3
+                                    },
+                                    1000:{
+                                        items:5
+                                    }
+                                }
+                            });
+                        });
                         </script>
                     </div>
                 </div>
@@ -514,5 +535,7 @@ See <a href="#submission">Submission</a> section for more information on how to 
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+        <!-- Carousel-->
+        <script src="js/owl.carousel.min.js"></script>
     </body>
 </html>
